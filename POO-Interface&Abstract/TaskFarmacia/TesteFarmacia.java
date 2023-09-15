@@ -1,6 +1,7 @@
 package exception;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.Optional;
 
 public class TesteFarmacia {
 
@@ -8,6 +9,45 @@ public class TesteFarmacia {
 		Scanner leia = new Scanner(System.in);
 		Throw cliente1 = new Throw(null, 0, 0, null);
 		Throw cliente2 = new Throw(null, 0, 0, null);
+
+		String[] dados = new String[3];
+		
+		System.out.println("Olá, digite seu nome completo por favor:");
+		dados[0] = leia.nextLine();
+		
+		System.out.println("\nAgora digite o Estado que você mora por favor:");
+		dados [1] = leia.nextLine();
+		
+		System.out.println("\nE também precisamos saber seu bairro por favor:");
+		dados[2] = leia.nextLine();
+		
+		Optional<String> checaNulo0 = Optional.ofNullable(dados[0]);
+		Optional<String> checaNulo1 = Optional.ofNullable(dados[1]);
+		Optional<String> checaNulo2 = Optional.ofNullable(dados[2]);
+		
+		if (checaNulo0.isPresent() && checaNulo0.get().isBlank()) {
+		    System.out.println("\nCliente registrado: Ops algo está faltando aqui. Por favor preencha novamente!");
+		    System.exit(0);
+		} else {
+		    String dado = dados[0].toLowerCase();
+		    System.out.println("\nCliente registrado: " + dado + "\n");
+		}
+		
+		if (checaNulo1.isPresent() && checaNulo1.get().isBlank()) {
+		    System.out.println("\nEstado registrado: Ops algo está faltando aqui. Por favor preencha novamente!");
+		    System.exit(0);
+		} else {
+		    String dado = dados[1].toLowerCase();
+		    System.out.println("\nEstado registrado: " + dado + "\n");
+		}
+		
+		if (checaNulo2.isPresent() && checaNulo2.get().isBlank()) {
+		    System.out.println("\nBairro registrado: Ops algo está faltando aqui. Por favor preencha novamente!");
+		    System.exit(0);
+		} else {
+		    String dado = dados[2].toLowerCase();
+		    System.out.println("\nCliente registrado: " + dado + "\n");
+		}
 		
 		int respost = 0;
 		
